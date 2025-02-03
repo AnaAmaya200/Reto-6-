@@ -522,6 +522,7 @@ Aquí se ve el main
 #main.py
 import math
 import paquete.Point as Point
+import paquete.Line as Line
 import paquete.Rectangle as Rectangle
 import paquete.Triangle as Triangle
 import paquete.RectangleTypes.Square as Square
@@ -529,91 +530,118 @@ import paquete.TriangleTypes.Equilateral as Equilateral
 import paquete.TriangleTypes.Isosceles as Isosceles
 import paquete.TriangleTypes.Scalene as Scalene
 import paquete.TriangleTypes.Trirectangle as Trirectangle
+#Point
+try:
+    p1 = Point(3, 4)
+    p2 = Point(0, 0)
+    print("Distancia:", p1.compute_distance(p2))
+except ValueError as ve:
+    print(f"Error de valor: {ve}")
+except TypeError as te:
+    print(f"Error de tipo: {te}")
+#Line
+try:
+    p1 = Point(0, 0)
+    p2 = Point(3, 4)
+    linea = Line(p1, p2)
+    print("Longitud de la línea:", linea.compute_length())
+except TypeError as te:
+    print(f"Error de tipo: {te}")
+except RuntimeError as re:
+    print(f"Error de ejecución: {re}")
 
+#Triangle
+try:
+    p1 = Point(0, 0)
+    p2 = Point(3, 0)
+    p3 = Point(3, 4)
+    triangulo = Triangle(p1, p2, p3)
+    print("Perímetro del triángulo:", triangulo.compute_perimeter())
+except TypeError as te:
+    print(f"Error de tipo: {te}")
+except RuntimeError as re:
+    print(f"Error de ejecución: {re}")
 
-bottom_left_corner_rect = Point.Point(0, 0)
-upper_right_corner_rect = Point.Point(4, 3)
-    
-bottom_left_corner_square = Point.Point(0, 0)
-upper_right_corner_square = Point.Point(3, 3)
-    
+#Rectangle
+try:
+    p1 = Point(0, 0)
+    p2 = Point(4, 3)
+    rectangulo = Rectangle(p1, p2)
+    print("Área del rectángulo:", rectangulo.compute_area())
+    print("Perímetro del rectángulo:", rectangulo.compute_perimeter())
+    print("Ángulos internos del rectángulo:", rectangulo.compute_inner_angles())
+except TypeError as te:
+    print(f"Error de tipo: {te}")
+except RuntimeError as re:
+    print(f"Error de ejecución: {re}")
+#Square
+try:
+    p1 = Point(0, 0)
+    p2 = Point(4, 4)
+    cuadrado = Square(p1, p2)
+    print("Área del cuadrado:", cuadrado.compute_area())
+    print("Ángulos internos del cuadrado:", cuadrado.compute_inner_angles())
+except TypeError as te:
+    print(f"Error de tipo: {te}")
+except RuntimeError as re:
+    print(f"Error de ejecución: {re}")
 
-rect = Rectangle.Rectangle(bottom_left_corner_rect, upper_right_corner_rect)
-square = Square.Square(bottom_left_corner_square, upper_right_corner_square)
+#Equilateral
+try:
+    p1 = Point(0, 0)
+    p2 = Point(3, 0)
+    p3 = Point(1.5, 2.598)
+    equilatero = Equilateral(p1, p2, p3)
+    print("Área del triángulo equilátero:", equilatero.compute_area())
+    print("Perímetro del triángulo equilátero:", equilatero.compute_perimeter())
+    print("Ángulos internos del triángulo equilátero:", equilatero.compute_inner_angles())
+except TypeError as te:
+    print(f"Error de tipo: {te}")
+except RuntimeError as re:
+    print(f"Error de ejecución: {re}")
 
-print(f"El rectángulo tiene área de {rect.compute_area():.2f} y perímetro de {rect.compute_perimeter():.2f}")
-print(f"Sus ángulos internos son {rect.compute_inner_angles()}")
-    
-print ("\n")
+# Isosceles
+try:
+    p1 = Point(0, 0)
+    p2 = Point(3, 0)
+    p3 = Point(1.5, 4)
+    isosceles = Isosceles(p1, p2, p3)
+    print("Área del triángulo isósceles:", isosceles.compute_area())
+    print("Perímetro del triángulo isósceles:", isosceles.compute_perimeter())
+    print("Ángulos internos del triángulo isósceles:", isosceles.compute_inner_angles())
+except TypeError as te:
+    print(f"Error de tipo: {te}")
+except RuntimeError as re:
+    print(f"Error de ejecución: {re}")
 
-print(f"El cuadrado tiene área de {square.compute_area():.2f} y perímetro de{square.compute_perimeter():.2f}")
-print(f"Sus ángulos internos son {square.compute_inner_angles()}")
+# Scalene
+try:
+    p1 = Point(0, 0)
+    p2 = Point(4, 0)
+    p3 = Point(2, 3)
+    escaleno = Scalene(p1, p2, p3)
+    print("Área del triángulo escaleno:", escaleno.compute_area())
+    print("Perímetro del triángulo escaleno:", escaleno.compute_perimeter())
+    print("Ángulos internos del triángulo escaleno:", escaleno.compute_inner_angles())
+except TypeError as te:
+    print(f"Error de tipo: {te}")
+except RuntimeError as re:
+    print(f"Error de ejecución: {re}")
 
-print ("\n")
+# Trirectangle
+try:
+    p1 = Point(0, 0)
+    p2 = Point(4, 0)
+    p3 = Point(4, 3)
+    trirectangulo = Trirectangle(p1, p2, p3)
+    print("Área del triángulo rectángulo:", trirectangulo.compute_area())
+    print("Perímetro del triángulo rectángulo:", trirectangulo.compute_perimeter())
+    print("Ángulos internos del triángulo rectángulo:", trirectangulo.compute_inner_angles())
+except TypeError as te:
+    print(f"Error de tipo: {te}")
+except RuntimeError as re:
+    print(f"Error de ejecución: {re}")
 
-p1 = Point.Point(0, 0)
-p2 = Point.Point(4, 0)
-p3 = Point.Point(2, 4)
-p4 = Point.Point(3, 0)
-p5 = Point.Point(3, 3)
-
-triangle = Triangle.Triangle(p1, p2, p3)
-isosceles = Isosceles.Isosceles(p1, p2, p3)
-equilateral = Equilateral.Equilateral(p1, Point.Point(4, 0), Point.Point(2, math.sqrt(12)))
-scalene = Scalene.Scalene(p1, p4, p5)
-trirectangle = Trirectangle.Trirectangle(p1, p2, Point.Point(4, 3))
-
- 
-
-print(f"El triangulo inicial tiene un perímetro de {triangle.compute_perimeter():.2f}")
-
-print ("\n")
-
-print(f"El triangulo isosceles tiene un área de {isosceles.compute_area():.2f}, un perímetro de {isosceles.compute_perimeter():.2f}")
-
-print(f"Sus ángulos internos son {isosceles.compute_inner_angles()}")
-    
-print ("\n")
-print(f"El triangulo equilátero tiene un área de {equilateral.compute_area():.2f}, un perímetro de {equilateral.compute_perimeter():.2f}")
-print(f"Sus ángulos internos son {equilateral.compute_inner_angles()}")
-
-print ("\n")
-
-print(f"El triangulo escaleno tiene un área de {scalene.compute_area():.2f}, un perímetro de  {scalene.compute_perimeter():.2f}")
-print(f"Sus ángulos internos son {scalene.compute_inner_angles()}")
-
-print ("\n")
-print(f"El triangulo rectángulo tiene un área de {trirectangle.compute_area():.2f}, un perímetro de {trirectangle.compute_perimeter():.2f}")
-print(f"Sus ángulos internos son de {trirectangle.compute_inner_angles()}")
-
-
-```
-##RESULTADO
-```python
-El rectángulo tiene área de 12.00 y perímetro de 14.00
-Sus ángulos internos son [90, 90, 90, 90]
-
-
-El cuadrado tiene área de 9.00 y perímetro de12.00
-Sus ángulos internos son [90, 90, 90, 90]
-
-
-El triangulo inicial tiene un perímetro de 12.94
-
-
-El triangulo isosceles tiene un área de 35.98, un perímetro de 12.94
-Sus ángulos internos son [53.15748233594751, 63.42125883202625, 63.42125883202623]
-
-
-El triangulo equilátero tiene un área de 6.93, un perímetro de 12.00
-Sus ángulos internos son [60, 60, 60]
-
-
-El triangulo escaleno tiene un área de 4.50, un perímetro de  10.24
-Sus ángulos internos son [45.035650716454285, 45.035650716454285, 89.92869856709143]
-
-
-El triangulo rectángulo tiene un área de 10.00, un perímetro de 12.00
 ```
 
 
